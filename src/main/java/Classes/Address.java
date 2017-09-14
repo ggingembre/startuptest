@@ -1,27 +1,50 @@
 package Classes;
 
+import javax.persistence.*;
+
 /**
  * Created by Guillaume Gingembre on 14/09/2017.
  */
+
+@Entity
+@Table(name = "address")
 public class Address {
 
-    private String town;
-    private Region region;
-    private Country country;
+
+    @Id
+    @GeneratedValue
+    @Column(name = "address_id", updatable=false, nullable=false)
     private long addressId;
+
+    @Column(name = "town")
+    private String town;
+
+    @Column(name = "region")
+    private Region region;
+
+    @Column(name = "country")
+    private Country country;
+
 
     public Address(){}
 
-    public Address(String town, Region region, Country country, long addressId) {
+    public Address(String town, Region region, Country country) {
         this.town = town;
         this.region = region;
         this.country = country;
-        this.addressId = addressId;
-
     }
 
-    // Question: as we put the object in the project and business plan objects, we do not need a reference with
+// Question: as we put the object in the project and business plan objects, we do not need a reference with
     // an ID, correct?
+
+
+    public long getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(long addressId) {
+        this.addressId = addressId;
+    }
 
     public String getTown() {
         return town;
@@ -47,21 +70,14 @@ public class Address {
         this.country = country;
     }
 
-    public long getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(long addressId) {
-        this.addressId = addressId;
-    }
-
     @Override
     public String toString() {
         return "Address{" +
-                "town='" + town + '\'' +
+                "addressId=" + addressId +
+                ", town='" + town + '\'' +
                 ", region=" + region +
                 ", country=" + country +
-                ", addressId=" + addressId +
                 '}';
     }
+
 }

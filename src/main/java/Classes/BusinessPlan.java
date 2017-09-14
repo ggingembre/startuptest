@@ -22,8 +22,8 @@ public class BusinessPlan {
     @Column(name = "project_id")
     private String projectId;
 
-    @Column(name = "address_id")
-    private long addressId;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
 
     @Column(name = "idea")
     private String idea;
@@ -73,20 +73,17 @@ public class BusinessPlan {
     @Column(name = "docurl")
     private String docurl;
 
-
-    public BusinessPlan (){}
-
-
-
-
     // many to many relationship mapping:
 
     @ManyToMany(mappedBy = "businessPlans")
     private Collection<Project> projects;
 
-    public BusinessPlan(String projectId, long addressId, String idea, String currentState, String market, String opportunity, String solution, String competition, String usp, String businessModel, String fundsUses, String mentors, String risks, String finances, String previousRounds, String collateral, String weburl, String docurl, Collection<Project> projects) {
+
+    public BusinessPlan (){}
+
+    public BusinessPlan(String projectId, Address address, String idea, String currentState, String market, String opportunity, String solution, String competition, String usp, String businessModel, String fundsUses, String mentors, String risks, String finances, String previousRounds, String collateral, String weburl, String docurl, Collection<Project> projects) {
         this.projectId = projectId;
-        this.addressId = addressId;
+        this.address = address;
         this.idea = idea;
         this.currentState = currentState;
         this.market = market;
@@ -122,12 +119,12 @@ public class BusinessPlan {
         this.projectId = projectId;
     }
 
-    public long getAddressId() {
-        return addressId;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressId(long addressId) {
-        this.addressId = addressId;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String getIdea() {
@@ -271,7 +268,7 @@ public class BusinessPlan {
         return "Classes.BusinessPlan{" +
                 "businessplan_id=" + businessplan_id +
                 ", projectId='" + projectId + '\'' +
-                ", addressId=" + addressId +
+                ", address=" + address +
                 ", idea='" + idea + '\'' +
                 ", currentState='" + currentState + '\'' +
                 ", market='" + market + '\'' +

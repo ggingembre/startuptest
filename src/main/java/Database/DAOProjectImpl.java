@@ -47,7 +47,7 @@ public class DAOProjectImpl implements DAOProject {
 
         updateProject.setProjectName(project.getProjectName());
         updateProject.setProjectDescription(project.getProjectDescription());
-        updateProject.setProjectAddressId(project.getProjectAddressId());
+        updateProject.setProjectAddress(project.getProjectAddress());
 
         em.getTransaction().commit();
 
