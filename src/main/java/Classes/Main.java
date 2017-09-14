@@ -23,13 +23,13 @@ public class Main {
 
         System.out.println("Creating objects...");
 
-        Address addressKherson = new Address ("Kherson", Region.Kherson, Country.UKRAINE);
+        Address addressKherson = new Address ("Kherson", Region.Kherson, Country.UKRAINE, 1);
 
         BigDecimal inv = new BigDecimal(100000);
         BigDecimal raised = new BigDecimal(10000);
         BigDecimal mininv = new BigDecimal(1000);
 
-        Project project = new Project ("Kherson Farm", Industry.Agriculture, addressKherson,
+        Project project = new Project ("Kherson Farm", Industry.Agriculture, 1,
                 "Grow stuff in Kherson","logourl", "docurl", "weburl",
                 inv, raised, mininv, 20, LocalDate.parse("10/09/2017", formatter), true);
 

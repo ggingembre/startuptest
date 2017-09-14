@@ -22,8 +22,8 @@ public class BusinessPlan {
     @Column(name = "project_id")
     private String projectId;
 
-    @Column(name = "address")
-    private Address address;
+    @Column(name = "address_id")
+    private long addressId;
 
     @Column(name = "idea")
     private String idea;
@@ -84,9 +84,9 @@ public class BusinessPlan {
     @ManyToMany(mappedBy = "businessPlans")
     private Collection<Project> projects;
 
-    public BusinessPlan(String projectId, Address address, String idea, String currentState, String market, String opportunity, String solution, String competition, String usp, String businessModel, String fundsUses, String mentors, String risks, String finances, String previousRounds, String collateral, String weburl, String docurl, Collection<Project> projects) {
+    public BusinessPlan(String projectId, long addressId, String idea, String currentState, String market, String opportunity, String solution, String competition, String usp, String businessModel, String fundsUses, String mentors, String risks, String finances, String previousRounds, String collateral, String weburl, String docurl, Collection<Project> projects) {
         this.projectId = projectId;
-        this.address = address;
+        this.addressId = addressId;
         this.idea = idea;
         this.currentState = currentState;
         this.market = market;
@@ -122,12 +122,12 @@ public class BusinessPlan {
         this.projectId = projectId;
     }
 
-    public Address getAddress() {
-        return address;
+    public long getAddressId() {
+        return addressId;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddressId(long addressId) {
+        this.addressId = addressId;
     }
 
     public String getIdea() {
@@ -271,7 +271,7 @@ public class BusinessPlan {
         return "Classes.BusinessPlan{" +
                 "businessplan_id=" + businessplan_id +
                 ", projectId='" + projectId + '\'' +
-                ", address=" + address +
+                ", addressId=" + addressId +
                 ", idea='" + idea + '\'' +
                 ", currentState='" + currentState + '\'' +
                 ", market='" + market + '\'' +

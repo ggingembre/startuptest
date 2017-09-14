@@ -23,8 +23,8 @@ public class Project {
     @Column(name = "project_industry") // do enum of 10 industries - done!
     private Industry projectIndustry;
 
-    @Column(name = "project_address") // do a class address - done!
-    private Address projectAddress;
+    @Column(name = "project_address_id") // do a class address - done!
+    private long projectAddressId;
 
     @Column(name = "project_description")
     private String projectDescription;
@@ -74,13 +74,13 @@ public class Project {
         this.businessPlans = businessPlans;
     }
 
-    
+
     public Project(){}
 
-    public Project(String projectName, Industry projectIndustry, Address projectAddress, String projectDescription, String logoLink, String projectDocLink, String projectSiteLink, BigDecimal projectExpectedRaise, BigDecimal projectAmountRaised, BigDecimal projectMinInv, long projectReturn, LocalDate projectLastChange, boolean isActive) {
+    public Project(String projectName, Industry projectIndustry, long projectAddressId, String projectDescription, String logoLink, String projectDocLink, String projectSiteLink, BigDecimal projectExpectedRaise, BigDecimal projectAmountRaised, BigDecimal projectMinInv, long projectReturn, LocalDate projectLastChange, boolean isActive) {
         this.projectName = projectName;
         this.projectIndustry = projectIndustry;
-        this.projectAddress = projectAddress;
+        this.projectAddressId = projectAddressId;
         this.projectDescription = projectDescription;
         this.logoLink = logoLink;
         this.projectDocLink = projectDocLink;
@@ -118,12 +118,12 @@ public class Project {
         this.projectIndustry = projectIndustry;
     }
 
-    public Address getProjectAddress() {
-        return projectAddress;
+    public long getProjectAddressId() {
+        return projectAddressId;
     }
 
-    public void setProjectAddress(Address projectAddress) {
-        this.projectAddress = projectAddress;
+    public void setProjectAddressId(long projectAddressId) {
+        this.projectAddressId = projectAddressId;
     }
 
     public String getProjectDescription() {
@@ -212,7 +212,7 @@ public class Project {
                 "projectId=" + projectId +
                 ", projectName='" + projectName + '\'' +
                 ", projectIndustry=" + projectIndustry +
-                ", projectAddress=" + projectAddress +
+                ", projectAddressId=" + projectAddressId +
                 ", projectDescription='" + projectDescription + '\'' +
                 ", logoLink='" + logoLink + '\'' +
                 ", projectDocLink='" + projectDocLink + '\'' +
