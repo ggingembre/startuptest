@@ -1,3 +1,5 @@
+package Classes;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -79,7 +81,7 @@ public class BusinessPlan {
 
     // many to many relationship mapping:
 
-    @ManyToMany(mappedBy = "businessplans")
+    @ManyToMany(mappedBy = "businessPlans")
     private Collection<Project> projects;
 
     public BusinessPlan(String projectId, Address address, String idea, String currentState, String market, String opportunity, String solution, String competition, String usp, String businessModel, String fundsUses, String mentors, String risks, String finances, String previousRounds, String collateral, String weburl, String docurl, Collection<Project> projects) {
@@ -266,7 +268,7 @@ public class BusinessPlan {
 
     @Override
     public String toString() {
-        return "BusinessPlan{" +
+        return "Classes.BusinessPlan{" +
                 "businessplan_id=" + businessplan_id +
                 ", projectId='" + projectId + '\'' +
                 ", address=" + address +

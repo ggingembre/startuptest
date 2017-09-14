@@ -1,3 +1,5 @@
+package Classes;
+
 /**
  * Created by Guillaume Gingembre on 14/09/2017.
  */
@@ -42,7 +44,7 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
+        return "Classes.Address{" +
                 "town='" + town + '\'' +
                 ", region=" + region +
                 ", country=" + country +

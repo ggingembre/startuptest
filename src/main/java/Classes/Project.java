@@ -1,4 +1,4 @@
-/**
+package Classes; /**
  * Created by Guillaume Gingembre on 14/09/2017.
  */
 
@@ -48,7 +48,7 @@ public class Project {
     private BigDecimal projectMinInv;
 
     @Column(name = "project_return")
-    private long projectReturn;
+    private double projectReturn;
 
     @Column(name = "project_last_change")
     private LocalDate projectLastChange;
@@ -58,7 +58,7 @@ public class Project {
 
     public Project(){}
 
-    public Project(String projectName, Industry projectIndustry, Address projectAddress, String projectDescription, String logoLink, String projectDocLink, String projectSiteLink, BigDecimal projectExpectedRaise, BigDecimal projectAmountRaised, BigDecimal projectMinInv, long projectReturn, LocalDate projectLastChange, boolean isActive, Set<BusinessPlan> businessPlans) {
+    public Project(String projectName, Industry projectIndustry, Address projectAddress, String projectDescription, String logoLink, String projectDocLink, String projectSiteLink, BigDecimal projectExpectedRaise, BigDecimal projectAmountRaised, BigDecimal projectMinInv, long projectReturn, LocalDate projectLastChange, boolean isActive) {
         this.projectName = projectName;
         this.projectIndustry = projectIndustry;
         this.projectAddress = projectAddress;
@@ -72,7 +72,6 @@ public class Project {
         this.projectReturn = projectReturn;
         this.projectLastChange = projectLastChange;
         this.isActive = isActive;
-        this.businessPlans = businessPlans;
     }
 
 // one start up may have many business plans, and one business plan may have many start ups: many to many
@@ -174,7 +173,7 @@ public class Project {
         this.projectMinInv = projectMinInv;
     }
 
-    public long getProjectReturn() {
+    public double getProjectReturn() {
         return projectReturn;
     }
 
@@ -208,7 +207,7 @@ public class Project {
 
     @Override
     public String toString() {
-        return "Project{" +
+        return "Classes.Project{" +
                 "projectId=" + projectId +
                 ", projectName='" + projectName + '\'' +
                 ", projectIndustry=" + projectIndustry +
