@@ -14,7 +14,7 @@ public class BusinessPlan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "businessplan_id")
+    @Column(name = "businessplan_id", updatable=false, nullable=false)
     private long businessplan_id;
 
     // one start up may have many business plans, many to one relationship
