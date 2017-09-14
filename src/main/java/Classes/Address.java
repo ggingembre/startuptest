@@ -9,6 +9,8 @@ public class Address {
     private Region region;
     private Country country;
 
+    public Address(){}
+
     public Address(String town, Region region, Country country) {
         this.town = town;
         this.region = region;

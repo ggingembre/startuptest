@@ -56,6 +56,25 @@ public class Project {
     @Column(name = "isActive")
     private boolean isActive;
 
+    // one start up may have many business plans, and one business plan may have many start ups: many to many
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<BusinessPlan> businessPlans = new HashSet<BusinessPlan>(0);
+
+    @JoinTable(name = "projects_businessplans", joinColumns = {
+            @JoinColumn(name = "project_Id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "businessplan_id",
+                    nullable = false, updatable = false) })
+
+    public Set<BusinessPlan> getBusinessPlans() {
+        return businessPlans;
+    }
+
+    public void setBusinessPlans(Set<BusinessPlan> businessPlans) {
+        this.businessPlans = businessPlans;
+    }
+
+    
     public Project(){}
 
     public Project(String projectName, Industry projectIndustry, Address projectAddress, String projectDescription, String logoLink, String projectDocLink, String projectSiteLink, BigDecimal projectExpectedRaise, BigDecimal projectAmountRaised, BigDecimal projectMinInv, long projectReturn, LocalDate projectLastChange, boolean isActive) {
@@ -73,16 +92,6 @@ public class Project {
         this.projectLastChange = projectLastChange;
         this.isActive = isActive;
     }
-
-// one start up may have many business plans, and one business plan may have many start ups: many to many
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<BusinessPlan> businessPlans = new HashSet<BusinessPlan>(0);
-
-    @JoinTable(name = "projects_businessplans", joinColumns = {
-            @JoinColumn(name = "project_Id", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "businessplan_id",
-                    nullable = false, updatable = false) })
 
 
     public long getProjectId() {
@@ -195,14 +204,6 @@ public class Project {
 
     public void setActive(boolean active) {
         isActive = active;
-    }
-
-    public Set<BusinessPlan> getBusinessPlans() {
-        return businessPlans;
-    }
-
-    public void setBusinessPlans(Set<BusinessPlan> businessPlans) {
-        this.businessPlans = businessPlans;
     }
 
     @Override
